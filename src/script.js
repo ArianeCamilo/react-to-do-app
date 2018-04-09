@@ -13,7 +13,9 @@ var Todo = React.createClass({
     },
 
     save: function(){
-        alert("Todo saved")
+        var val = this.refs.newValue.getDOMNode().value;
+        alert("Todo: " + val + " saved!");
+        this.setState({editing: false});
     },
 
     todoDisplay: function(){
@@ -35,7 +37,7 @@ var Todo = React.createClass({
             <li className="todo">
             
             <span>
-            <input type="text" placeholder="Edit Todo" defaultValue={this.props.children} />
+            <input type="text" placeholder="Edit Todo" ref="newValue" defaultValue={this.props.children} />
             </span>
     
             <button onClick={this.save} className="btn btn-default btn-sm glyphicon glyphicon-floppy-disk remove pull-right" />
