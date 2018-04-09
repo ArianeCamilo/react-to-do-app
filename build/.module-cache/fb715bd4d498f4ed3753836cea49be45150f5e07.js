@@ -14,11 +14,6 @@ var Todo = React.createClass({displayName: "Todo",
                         React.createElement("button", {className: "btn btn-default btn-sm"}, "+")
                     )
              
-                ), 
-
-                React.createElement("ul", null, 
-                	React.createElement("li", {className: "todo"}, "Call Henry"), 
-                	React.createElement("li", {className: "todo"}, "Pay phone bill")
                 )
 
             )

@@ -5,6 +5,17 @@ var Todo = React.createClass({
         return (
             <div>
                 <h1>Things to do</h1>
+                <div className="form-inline">
+                    <div className="form-group">
+                        <input className="form-control" placeholder="Add Todo" />
+                        <button className="btn btn-default btn-sm">+</button>                        
+                    </div>
+                </div>
+
+                <ul>
+                    <li className="todo">Call Henry</li>
+                    <li className="todo">Pay phone bill</li>
+                </ul>            
             </div>
         );
     }
