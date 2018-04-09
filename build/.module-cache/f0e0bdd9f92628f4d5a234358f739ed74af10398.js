@@ -1,29 +1,10 @@
 var Todo = React.createClass({displayName: "Todo",
 
-
-    edit: function() {
-        alert("edit todo");
-    },
-
-    remove: function(){
-        alert("Todo removed");
-    },
-
     render: function() {
 
         return (                 
                 
-            React.createElement("li", {className: "todo"}, 
-            
-            React.createElement("span", {onClick: this.edit}, 
-            this.props.children
-            ), 
-
-            React.createElement("button", {onClick: this.remove, className: "btn btn-default btn-sm glyphicon glyphicon-trash remove pull-right"})
-            
-
-
-            )
+            React.createElement("li", {className: "todo"}, this.props.children)
                          
         );
     }

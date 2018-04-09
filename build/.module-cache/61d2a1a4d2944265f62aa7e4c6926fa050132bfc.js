@@ -1,12 +1,11 @@
 var Todo = React.createClass({displayName: "Todo",
 
-
-    edit: function() {
+    edit: function(){
         alert("edit todo");
     },
 
     remove: function(){
-        alert("Todo removed");
+        alert("Tdoo removed")
     },
 
     render: function() {
@@ -17,10 +16,7 @@ var Todo = React.createClass({displayName: "Todo",
             
             React.createElement("span", {onClick: this.edit}, 
             this.props.children
-            ), 
-
-            React.createElement("button", {onClick: this.remove, className: "btn btn-default btn-sm glyphicon glyphicon-trash remove pull-right"})
-            
+            )
 
 
             )

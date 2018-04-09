@@ -1,14 +1,30 @@
 var Todo = React.createClass({
 
+
+    edit: function() {
+        alert("edit todo");
+    },
+
+    remove: function(){
+        alert("Todo removed");
+    },
+
     render: function() {
 
-        return (            
-
-                <ul>
-                    <li className="todo">{this.props.todo}</li>
-                    
-                </ul>            
+        return (                 
+                
+            <li className="todo">
             
+            <span onClick={this.edit}>
+            {this.props.children}
+            </span>
+
+            <button onClick={this.remove} className="btn btn-default btn-sm glyphicon glyphicon-trash remove pull-right" />
+            
+
+
+            </li>
+                         
         );
     }
 
@@ -24,9 +40,10 @@ React.render(<div>
                 </div>
             </div>
         
-
-    <Todo todo="Call Henry"/>
-    <Todo todo="Pay phone bill"/>
-    <Todo todo="Make dentist appointment"/>
+    <ul>
+    <Todo>Call Henry</Todo>
+    <Todo>Pay phone bill</Todo>
+    <Todo>Make dentist appointment</Todo>
+    </ul>
 
     </div>, document.getElementById("todo"));
