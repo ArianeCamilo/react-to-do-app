@@ -1,31 +1,56 @@
 var Todo = React.createClass({
-
+    getInitialState: function(){
+        return {editing: false}
+    },
 
     edit: function() {
         alert("edit todo");
+        this.setState({editing: true});
     },
 
     remove: function(){
         alert("Todo removed");
     },
 
-    render: function() {
+    save: function(){
+        alert("Todo saved")
+    },
 
-        return (                 
-                
+    todoDisplay: function(){
+        return (                      
             <li className="todo">
             
             <span onClick={this.edit}>
             {this.props.children}
             </span>
-
+    
             <button onClick={this.remove} className="btn btn-default btn-sm glyphicon glyphicon-trash remove pull-right" />
-            
-
-
-            </li>
-                         
+                  
+            </li>                 
         );
+        
+    },
+    todoForm: function(){
+        return (                      
+            <li className="todo">
+            
+            <span>
+            <input type="text" placeholder="Edit Todo" defaultValue={this.props.children} />
+            </span>
+    
+            <button onClick={this.save} className="btn btn-default btn-sm glyphicon glyphicon-floppy-disk remove pull-right" />
+                  
+            </li>                 
+        );
+
+    },
+
+    render: function() {
+        if(this.state.editing) {
+            return this.todoForm();
+        } else {
+            return this.todoDisplay();
+        }
     }
 
 });

@@ -1,11 +1,8 @@
 var Todo = React.createClass({displayName: "Todo",
-    getInitialState: function(){
-        return {editing: false}
-    },
+
 
     edit: function() {
         alert("edit todo");
-        this.setState({editing: true});
     },
 
     remove: function(){
@@ -38,7 +35,7 @@ var Todo = React.createClass({displayName: "Todo",
             React.createElement("input", {type: "text", placeholder: "Edit Todo", defaultValue: this.props.children})
             ), 
     
-            React.createElement("button", {onClick: this.save, className: "btn btn-default btn-sm glyphicon glyphicon-floppy-disk remove pull-right"})
+            React.createElement("button", {onClick: this.save, className: "btn btn-default btn-sm glyphicon glyphicon-trash remove pull-right"})
                   
             )                 
         );
@@ -46,11 +43,7 @@ var Todo = React.createClass({displayName: "Todo",
     },
 
     render: function() {
-        if(this.state.editing) {
-            return this.todoForm();
-        } else {
-            return this.todoDisplay();
-        }
+
     }
 
 });
