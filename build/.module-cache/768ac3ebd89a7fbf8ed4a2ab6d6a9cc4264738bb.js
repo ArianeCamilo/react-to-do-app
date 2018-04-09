@@ -25,8 +25,6 @@ React.render(React.createElement("div", null,
             ), 
         
 
-    React.createElement(Todo, {todo: "Call Henry"}), 
-    React.createElement(Todo, {todo: "Pay phone bill"}), 
-    React.createElement(Todo, {todo: "Make dentist appointment"})
-
+    React.createElement(Todo, {todo: "Call Henry"})
+    
     ), document.getElementById("todo"));

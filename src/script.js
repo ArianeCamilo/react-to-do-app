@@ -2,24 +2,31 @@ var Todo = React.createClass({
 
     render: function() {
 
-        return (
-            <div>
-                <h1>Things to do</h1>
-                <div className="form-inline">
-                    <div className="form-group">
-                        <input className="form-control" placeholder="Add Todo" />
-                        <button className="btn btn-default btn-sm">+</button>                        
-                    </div>
-                </div>
+        return (            
 
                 <ul>
-                    <li className="todo">Call Henry</li>
-                    <li className="todo">Pay phone bill</li>
+                    <li className="todo">{this.props.todo}</li>
+                    
                 </ul>            
-            </div>
+            
         );
     }
 
 });
 
-React.render(<Todo />, document.getElementById("todo"));
+React.render(<div>
+
+        <h1>Things to do</h1>
+            <div className="form-inline">
+                <div className="form-group">
+                    <input className="form-control" placeholder="Add Todo" />
+                    <button className="btn btn-default btn-sm">+</button>                        
+                </div>
+            </div>
+        
+
+    <Todo todo="Call Henry"/>
+    <Todo todo="Pay phone bill"/>
+    <Todo todo="Make dentist appointment"/>
+
+    </div>, document.getElementById("todo"));
