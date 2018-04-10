@@ -9,11 +9,11 @@ var Todo = React.createClass({displayName: "Todo",
     },
     remove: function() {        
         this.props.onRemove(this.props.index);
+
     },
     save: function() {
-
-        var newValue = this.refs.newValue.getDOMNode().value;     
-        this.props.onChange(newValue,this.props.index);
+        var val = this.refs.newValue.getDOMNode().value;        
+        this.props.onChange(val, this.props.index);
         this.setState({editing:false});
     },
     todoDisplay: function() {
@@ -77,29 +77,27 @@ var TodoList = React.createClass({displayName: "TodoList",
                 'Pay phone bill', 
                 'Christmas cards'
             ],
+            text: "",
             placeholder: "Add a todo!",
-            input_style: "form-control",
-            text: ""
+            input_style: "form-control"
         };
     },
 
     onChange: function(e){
-
-        this.setState({text: e.target.value});
-        
+        this.setState({text: e.text.value});
     },
 
-    add: function(e){
+    add: function(){
         var arr = this.state.todos;
         var newTodo = this.refs.newTodo.getDOMNode().value;
 
-        if(!newTodo) {
-            e.preventDefault();
-            this.setState({placeholder: "Please add a todo", input_style: "form-control red"})
-        } else {
-            arr.push(newTodo);
-            this.setState({todos: arr, placeholder: "Add a todo!", text: null,  input_style: "form-control"});
-        }
+            if(!newTodo) {
+                e.preventDefault();
+                this.setState({placeholder: "Please add a todo", input_style: "form-control red"})
+            } else {
+                arr.push(newTodo);
+                this.setState({todos: arr, placeholder: "Add a todo!", text: null,  input_style: "form-control"});
+            }
     },
     
     update: function(newValue, i){
@@ -118,10 +116,10 @@ var TodoList = React.createClass({displayName: "TodoList",
 
             return (
                 React.createElement(Todo, {key: i, 
-                        index: i, 
-                        onChange: this.update, 
-                        onRemove: this.remove}, 
-                        todo
+                            index: i, 
+                            onChange: this.update, 
+                            onRemove: this.remove}, 
+                todo
                 )
             )
     },

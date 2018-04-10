@@ -9,11 +9,11 @@ var Todo = React.createClass({
     },
     remove: function() {        
         this.props.onRemove(this.props.index);
-
     },
     save: function() {
-        var val = this.refs.newValue.getDOMNode().value;        
-        this.props.onChange(val, this.props.index);
+
+        var newValue = this.refs.newValue.getDOMNode().value;     
+        this.props.onChange(newValue,this.props.index);
         this.setState({editing:false});
     },
     todoDisplay: function() {
@@ -76,15 +76,30 @@ var TodoList = React.createClass({
                 'Call Amy', 
                 'Pay phone bill', 
                 'Christmas cards'
-            ]
+            ],
+            placeholder: "Add a todo!",
+            input_style: "form-control",
+            text: ""
         };
     },
 
-    add: function(){
+    onChange: function(e){
+
+        this.setState({text: e.target.value});
+        
+    },
+
+    add: function(e){
         var arr = this.state.todos;
         var newTodo = this.refs.newTodo.getDOMNode().value;
-        arr.push(newTodo);
-        this.setState({todos: arr});
+
+        if(!newTodo) {
+            e.preventDefault();
+            this.setState({placeholder: "Please add a todo", input_style: "form-control red"})
+        } else {
+            arr.push(newTodo);
+            this.setState({todos: arr, placeholder: "Add a todo!", text: null,  input_style: "form-control"});
+        }
     },
     
     update: function(newValue, i){
@@ -102,11 +117,11 @@ var TodoList = React.createClass({
     eachTodo: function (todo,i) {
 
             return (
-                <Todo key={i}
-                            index={i}
-                            onChange={this.update}
-                            onRemove={this.remove}>
-                {todo}
+                <Todo   key={i}
+                        index={i}
+                        onChange={this.update}
+                        onRemove={this.remove}>
+                        {todo}
                 </Todo>
             )
     },
@@ -120,7 +135,7 @@ var TodoList = React.createClass({
                 <div className="form-inline">
 
                     <div className="form-group">
-                        <input ref="newTodo" className="form-control" placeholder="Add Todo" />               
+                        <input ref="newTodo" className={this.state.input_style} placeholder={this.state.placeholder} value={this.state.text} onChange={this.onChange}/>               
                         <button onClick={this.add} className="btn btn-default btn-sm">+</button>             
                     </div>
              
