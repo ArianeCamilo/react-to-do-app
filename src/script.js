@@ -13,8 +13,8 @@ var Todo = React.createClass({
 
     },
     save: function() {
-        var val = this.refs.newValue.getDOMNode().value;
-        alert('Todo: '+ val + ' saved!');
+        var val = this.refs.newValue.getDOMNode().value;        
+        this.props.onChange(val, this.props.index);
         this.setState({editing:false});
     },
     todoDisplay: function() {
@@ -80,12 +80,24 @@ var TodoList = React.createClass({
             ]
         };
     },
+    
+    update: function(newValue, i){
+        var arr = this.state.todos;
+        arr[i] = newValue;
+        this.setState({todos: arr});
+    },
+    
     eachTodo: function (todo,i) {
 
             return (
-                <Todo>{todo}</Todo>
+                <Todo key={i}
+                            index={i}
+                            onChange={this.update}>
+                {todo}
+                </Todo>
             )
     },
+
     render: function() {
 
         return (
