@@ -72,11 +72,7 @@ var TodoList = React.createClass({
     getInitialState: function() {
   
         return {
-            todos: [
-                'Call Amy', 
-                'Pay phone bill', 
-                'Christmas cards'
-            ],
+            todos: [],
             placeholder: "Add a todo!",
             input_style: "form-control",
             text: ""
@@ -130,13 +126,13 @@ var TodoList = React.createClass({
 
         return (
             <div>
-                <h1>Things to DO</h1>
+                <h1>Things to do</h1>
 
                 <div className="form-inline">
 
                     <div className="form-group">
                         <input ref="newTodo" className={this.state.input_style} placeholder={this.state.placeholder} value={this.state.text} onChange={this.onChange}/>               
-                        <button onClick={this.add} className="btn btn-default btn-sm">+</button>             
+                        <button onClick={this.add} className="btn btn-default btn-sm add-btn">+</button>             
                     </div>
              
                 </div>

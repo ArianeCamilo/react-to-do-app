@@ -126,13 +126,13 @@ var TodoList = React.createClass({displayName: "TodoList",
 
         return (
             React.createElement("div", null, 
-                React.createElement("h1", null, "Things to do"), 
+                React.createElement("h1", null, "Things to DO"), 
 
                 React.createElement("div", {className: "form-inline"}, 
 
                     React.createElement("div", {className: "form-group"}, 
                         React.createElement("input", {ref: "newTodo", className: this.state.input_style, placeholder: this.state.placeholder, value: this.state.text, onChange: this.onChange}), 
-                        React.createElement("button", {onClick: this.add, className: "btn btn-default btn-sm add-btn"}, "+")
+                        React.createElement("button", {onClick: this.add, className: "btn btn-default btn-sm"}, "+")
                     )
              
                 ), 
