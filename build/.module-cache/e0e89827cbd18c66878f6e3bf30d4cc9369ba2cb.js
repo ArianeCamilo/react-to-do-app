@@ -7,8 +7,9 @@ var Todo = React.createClass({displayName: "Todo",
         this.setState({editing:true});
       
     },
-    remove: function() {        
-        this.props.onRemove(this.props.index);
+    remove: function() {
+
+        alert('Todo removed');
 
     },
     save: function() {
@@ -92,20 +93,13 @@ var TodoList = React.createClass({displayName: "TodoList",
         arr[i] = newValue;
         this.setState({todos: arr});
     },
-
-    remove: function(i){
-        var arr = this.state.todos;
-        arr.splice(i, 1);
-        this.setState({todos: arr});
-    },
     
     eachTodo: function (todo,i) {
 
             return (
                 React.createElement(Todo, {key: i, 
                             index: i, 
-                            onChange: this.update, 
-                            onRemove: this.remove}, 
+                            onChange: this.update}, 
                 todo
                 )
             )

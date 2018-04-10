@@ -7,9 +7,8 @@ var Todo = React.createClass({
         this.setState({editing:true});
       
     },
-    remove: function() {
-
-        alert('Todo removed');
+    remove: function() {        
+        this.props.onRemove(this.props.index);
 
     },
     save: function() {
@@ -80,10 +79,23 @@ var TodoList = React.createClass({
             ]
         };
     },
+
+    add: function(){
+        var arr = this.state.todos;
+        var newTodo = this.refs.newTodo.getDOMNode().value;
+        arr.push(newTodo);
+        this.setState({todos: arr});
+    },
     
     update: function(newValue, i){
         var arr = this.state.todos;
         arr[i] = newValue;
+        this.setState({todos: arr});
+    },
+
+    remove: function(i){
+        var arr = this.state.todos;
+        arr.splice(i, 1);
         this.setState({todos: arr});
     },
     
@@ -92,7 +104,8 @@ var TodoList = React.createClass({
             return (
                 <Todo key={i}
                             index={i}
-                            onChange={this.update}>
+                            onChange={this.update}
+                            onRemove={this.remove}>
                 {todo}
                 </Todo>
             )
@@ -107,8 +120,8 @@ var TodoList = React.createClass({
                 <div className="form-inline">
 
                     <div className="form-group">
-                        <input className="form-control" placeholder="Add Todo" />               
-                        <button className="btn btn-default btn-sm">+</button>             
+                        <input ref="newTodo" className="form-control" placeholder="Add Todo" />               
+                        <button onClick={this.add} className="btn btn-default btn-sm">+</button>             
                     </div>
              
                 </div>
